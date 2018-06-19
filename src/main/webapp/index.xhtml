@@ -16,10 +16,7 @@
 			
 			<p:outputLabel value="Fecha Publicación:"></p:outputLabel>
 			<p:calendar label="Fecha Publicación" locale="es" pattern="dd/MM/yyyy HH:mm:ss" value="#{registerLibro.libro.fechaPublicación}" required="true"></p:calendar>
-			
-			<!--  <p:outputLabel value="Autor:"></p:outputLabel>
-			<p:inputText label="Autor" value="#{registerLibro.libro.employeeSalary}" required="true"></p:inputText>		
-				-->			
+		
 		</p:panelGrid>
 		<p:commandButton value="Registrar" action="#{registerLibro.register}" update="messages,:formu2,formu1"></p:commandButton>
 	</h:form>
@@ -28,28 +25,22 @@
 
 	<h:form id="formu2" rendered="#{registerEmployee.verificarSesion()}">
 	
-<!-- 		<p:commandButton actionListener="#{registerEmployee.listar()}" -->
-<!-- 			value="Listar" ajax="false" /> -->
-	
 		<p:dataTable value="#{registerLibro.lstLibros}" var="libro">
 
-			<p:column headerText="Id">
+			<p:column headerText="Id Libro">
 				<h:outputLabel value="#{libro.idLibro}" />
 			</p:column>
 			
 			<p:column headerText="Título">
-				<h:outputLabel value="#{libro.título}" />
+				<h:outputLabel value="#{libro.titulo}" />
 			</p:column>		
 				
 			<p:column headerText="Fecha Publicación">
 				<h:outputLabel value="#{libro.fechaPublicación}" >
 					<f:convertDateTime pattern="dd/MM/yyyy HH:mm " timeZone="#{registerLibro.timeZone}" />
+				  
 				</h:outputLabel>
 			</p:column>
-				
-			<!-- <p:column headerText="Salario">
-				<h:outputLabel value="#{emp.employeeSalary}" />
-			</p:column>							 -->
 			
 			<p:column headerText="Eliminar">
 				<h:commandLink actionListener="#{registerLibro.eliminar(libro)}"

@@ -18,19 +18,16 @@ and open the template in the editor.
 	<h:form>
 		<p:panelGrid columns="2">
 			<p:outputLabel value="Id" />
-			<p:inputText label="Id" value="#{registerEmployee.employee.employeeId}" readonly="true" required="true" />
+			<p:inputText label="Id" value="#{registerLibro.libro.idLibro}" readonly="true" required="true" />
 
-			<p:outputLabel value="Nombre" />
-			<p:inputText label="Nombre" value="#{registerEmployee.employee.employeeName}" required="true" />
+			<p:outputLabel value="Titulo" />
+			<p:inputText label="Titulo" value="#{registerLibro.libro.título}" required="true" />
 			
-			<p:outputLabel value="Salario" />
-			<p:inputText label="Salario" value="#{registerEmployee.employee.employeeSalary}" required="true" />
-
 			<p:outputLabel value="Fecha Alta"/>
-			<p:calendar locale = "es" pattern="dd/MM/yyyy HH:mm:ss" value="#{registerEmployee.employee.employeeHireDate}"></p:calendar>
+			<p:calendar locale = "es" pattern="dd/MM/yyyy HH:mm:ss" value="#{registerLibro.libro.fechaPublicación}"></p:calendar>
 
-			<p:commandButton action="#{registerEmployee.modificar()}" value="Modificar" ajax="false"/>
-			<p:commandButton action="#{registerEmployee.cancelar()}" immediate="true" value="Cancelar" />
+			<p:commandButton action="#{registerLibro.modificar()}" value="Modificar" ajax="false"/>
+			<p:commandButton action="#{registerLibro.cancelar()}" immediate="true" value="Cancelar" />
 			
 			
 		</p:panelGrid>

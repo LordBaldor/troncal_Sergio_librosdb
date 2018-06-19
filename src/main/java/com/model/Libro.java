@@ -15,19 +15,15 @@ public class Libro implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idLibro;
+
+	private String autor;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="fecha_publicación")
 	private Date fechaPublicación;
 
 	private String título;
-
-	//bi-directional many-to-one association to Autores
-	@ManyToOne
-	@JoinColumn(name="idAutor_FK")
-	private Autores autore;
 
 	public Libro() {
 	}
@@ -38,6 +34,14 @@ public class Libro implements Serializable {
 
 	public void setIdLibro(int idLibro) {
 		this.idLibro = idLibro;
+	}
+
+	public String getAutor() {
+		return this.autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
 	}
 
 	public Date getFechaPublicación() {
@@ -54,14 +58,6 @@ public class Libro implements Serializable {
 
 	public void setTítulo(String título) {
 		this.título = título;
-	}
-
-	public Autores getAutore() {
-		return this.autore;
-	}
-
-	public void setAutore(Autores autore) {
-		this.autore = autore;
 	}
 
 }
