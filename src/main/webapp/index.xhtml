@@ -5,23 +5,23 @@
 		xmlns:p="http://primefaces.org/ui">
 	<h:head>
 		<h:outputScript library="js" name="calendar_es.js" />
-		<title>Register Employee</title>
+		<title>Register Libro</title>
 	</h:head>
 	<h:form id="formu1">
 		<p:growl id="messages"></p:growl>
 		<p:panelGrid columns="2">
 		
-			<p:outputLabel value="Nombre:"></p:outputLabel>
-			<p:inputText label="Nombre" value="#{registerEmployee.employee.employeeName}" required="true" ></p:inputText>
+			<p:outputLabel value="Título:"></p:outputLabel>
+			<p:inputText label="Titulo" value="#{registerLibro.libro.título}" required="true" ></p:inputText>
 			
-			<p:outputLabel value="Fecha Alta:"></p:outputLabel>
-			<p:calendar label="Fecha Alta" locale="es" pattern="dd/MM/yyyy HH:mm:ss" value="#{registerEmployee.employee.employeeHireDate}" required="true"></p:calendar>
+			<p:outputLabel value="Fecha Publicación:"></p:outputLabel>
+			<p:calendar label="Fecha Publicación" locale="es" pattern="dd/MM/yyyy HH:mm:ss" value="#{registerLibro.libro.fechaPublicación}" required="true"></p:calendar>
 			
-			<p:outputLabel value="Salario:"></p:outputLabel>
-			<p:inputText label="Salario" value="#{registerEmployee.employee.employeeSalary}" required="true"></p:inputText>		
-							
+			<!--  <p:outputLabel value="Autor:"></p:outputLabel>
+			<p:inputText label="Autor" value="#{registerLibro.libro.employeeSalary}" required="true"></p:inputText>		
+				-->			
 		</p:panelGrid>
-		<p:commandButton value="Registrar" action="#{registerEmployee.register}" update="messages,:formu2,formu1"></p:commandButton>
+		<p:commandButton value="Registrar" action="#{registerLibro.register}" update="messages,:formu2,formu1"></p:commandButton>
 	</h:form>
 
 
@@ -31,33 +31,33 @@
 <!-- 		<p:commandButton actionListener="#{registerEmployee.listar()}" -->
 <!-- 			value="Listar" ajax="false" /> -->
 	
-		<p:dataTable value="#{registerEmployee.lstEmpleados}" var="emp">
+		<p:dataTable value="#{registerLibro.lstLibros}" var="libro">
 
 			<p:column headerText="Id">
-				<h:outputLabel value="#{emp.employeeId}" />
+				<h:outputLabel value="#{libro.idLibro}" />
 			</p:column>
 			
-			<p:column headerText="Nombre">
-				<h:outputLabel value="#{emp.employeeName}" />
+			<p:column headerText="Título">
+				<h:outputLabel value="#{libro.título}" />
 			</p:column>		
 				
-			<p:column headerText="Fecha Alta">
-				<h:outputLabel value="#{emp.employeeHireDate}" >
-					<f:convertDateTime pattern="dd/MM/yyyy HH:mm " timeZone="#{registerEmployee.timeZone}" />
+			<p:column headerText="Fecha Publicación">
+				<h:outputLabel value="#{libro.fechaPublicación}" >
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm " timeZone="#{registerLibro.timeZone}" />
 				</h:outputLabel>
 			</p:column>
 				
-			<p:column headerText="Salario">
+			<!-- <p:column headerText="Salario">
 				<h:outputLabel value="#{emp.employeeSalary}" />
-			</p:column>							
+			</p:column>							 -->
 			
 			<p:column headerText="Eliminar">
-				<h:commandLink actionListener="#{registerEmployee.eliminar(emp)}"
+				<h:commandLink actionListener="#{registerLibro.eliminar(libro)}"
 					value="Eliminar" />
 			</p:column>
 			
 			<p:column headerText="Modificar">
-				<h:commandLink action="#{registerEmployee.leer(emp)}" value="Modificar" />
+				<h:commandLink action="#{registerLibro.leer(libro)}" value="Modificar" />
 			</p:column>
 
 		</p:dataTable>

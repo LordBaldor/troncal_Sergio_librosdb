@@ -55,8 +55,8 @@ public class LibroService {
 	public void eliminar(Libro libro) throws Exception {
 
 		try {
-			Libro e = em.find(Libro.class, libro.getIdLibro());
-			em.remove(e);
+			Libro l = em.find(Libro.class, libro.getIdLibro());
+			em.remove(l);
 			// em.remove(null);
 		} catch (Exception e) {
 			throw new Exception("Error al eliminar");

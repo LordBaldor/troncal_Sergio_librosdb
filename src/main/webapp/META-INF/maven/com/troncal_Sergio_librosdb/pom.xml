@@ -5,7 +5,7 @@
   <groupId>com</groupId>
   <artifactId>troncal_Sergio_librosdb</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>troncal_Sergio_librosdb</name>
   <url>http://maven.apache.org</url>
