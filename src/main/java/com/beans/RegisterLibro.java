@@ -25,7 +25,7 @@ public class RegisterLibro {
 		return lstLibros;
 	}
 
-	public void setLstEmpleados(List<Libro> lstLibro) {
+	public void setLstLibros(List<Libro> lstLibro) {
 		this.lstLibros = lstLibro;
 	}
 
@@ -38,7 +38,7 @@ public class RegisterLibro {
 		return libroService;
 	}
 
-	public void setEmployeeService(LibroService libroService) {
+	public void setLibroService(LibroService libroService) {
 		this.libroService = libroService;
 	}
 

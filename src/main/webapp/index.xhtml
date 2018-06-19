@@ -1,61 +1,75 @@
-	<html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-		xmlns:h="http://java.sun.com/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:p="http://primefaces.org/ui">
-	<h:head>
-		<h:outputScript library="js" name="calendar_es.js" />
-		<title>Register Libro</title>
-	</h:head>
-	<h:form id="formu1">
-		<p:growl id="messages"></p:growl>
-		<p:panelGrid columns="2">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputScript library="js" name="calendar_es.js" />
+	<title>Register Libro</title>
+</h:head>
+<h:form id="formu1">
+	<p:growl id="messages"></p:growl>
+	<p:panelGrid columns="2">
+
+		<p:outputLabel value="Título:"></p:outputLabel>
+		<p:inputText label="Titulo" value="#{registerLibro.libro.título}"
+			required="true"></p:inputText>
+			
+		<p:outputLabel value="Autor:"></p:outputLabel>
+		<p:inputText label="Autor" value="#{registerLibro.libro.autor}"
+			required="true"></p:inputText>	
+
+		<p:outputLabel value="Fecha Publicación:"></p:outputLabel>
+		<p:calendar label="Fecha Publicación" locale="es"
+			pattern="dd/MM/yyyy HH:mm:ss"
+			value="#{registerLibro.libro.fechaPublicación}" required="true"></p:calendar>
+
+	</p:panelGrid>
+	<p:commandButton value="Registrar" action="#{registerLibro.register}"
+		update="messages,:formu2,formu1"></p:commandButton>
+</h:form>
+
+
+
+<h:form id="formu2" rendered="#{registerLibro.verificarSesion()}">
+
+	<p:dataTable value="#{registerLibro.lstLibros}" var="lib">
+
+		<p:column headerText="Id Libro">
+			<h:outputLabel value="#{lib.idLibro}" />
+		</p:column>
+
+		<p:column headerText="Título">
+			<h:outputLabel value="#{lib.título}" />
+		</p:column>
 		
-			<p:outputLabel value="Título:"></p:outputLabel>
-			<p:inputText label="Titulo" value="#{registerLibro.libro.título}" required="true" ></p:inputText>
-			
-			<p:outputLabel value="Fecha Publicación:"></p:outputLabel>
-			<p:calendar label="Fecha Publicación" locale="es" pattern="dd/MM/yyyy HH:mm:ss" value="#{registerLibro.libro.fechaPublicación}" required="true"></p:calendar>
-		
-		</p:panelGrid>
-		<p:commandButton value="Registrar" action="#{registerLibro.register}" update="messages,:formu2,formu1"></p:commandButton>
-	</h:form>
+		<p:column headerText="Autor">
+			<h:outputLabel value="#{lib.autor}" />
+		</p:column>
 
+		<p:column headerText="Fecha Publicación">
+			<h:outputLabel value="#{lib.fechaPublicación}">
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm " timeZone="#{registerLibro.timeZone}" />
+				   
+			</h:outputLabel>
+		</p:column>
 
+		<p:column headerText="Eliminar">
+			<h:commandLink actionListener="#{registerLibro.eliminar(lib)}"
+				value="Eliminar" />
+		</p:column>
 
-	<h:form id="formu2" rendered="#{registerEmployee.verificarSesion()}">
-	
-		<p:dataTable value="#{registerLibro.lstLibros}" var="libro">
+		<p:column headerText="Modificar">
+			<h:commandLink action="#{registerLibro.leer(lib)}"
+				value="Modificar" />
+		</p:column>
 
-			<p:column headerText="Id Libro">
-				<h:outputLabel value="#{libro.idLibro}" />
-			</p:column>
-			
-			<p:column headerText="Título">
-				<h:outputLabel value="#{libro.titulo}" />
-			</p:column>		
-				
-			<p:column headerText="Fecha Publicación">
-				<h:outputLabel value="#{libro.fechaPublicación}" >
-					<f:convertDateTime pattern="dd/MM/yyyy HH:mm " timeZone="#{registerLibro.timeZone}" />
-				  
-				</h:outputLabel>
-			</p:column>
-			
-			<p:column headerText="Eliminar">
-				<h:commandLink actionListener="#{registerLibro.eliminar(libro)}"
-					value="Eliminar" />
-			</p:column>
-			
-			<p:column headerText="Modificar">
-				<h:commandLink action="#{registerLibro.leer(libro)}" value="Modificar" />
-			</p:column>
+	</p:dataTable>
 
-		</p:dataTable>
-	
-		<h:commandButton value="Cerrar Sesión"
-			action="#{registerEmployee.cerrarSesion()}" />
-	</h:form>
+	<!-- <h:commandButton value="Cerrar Sesión"
+			action="#{registerLibro.cerrarSesion()}" /> -->
+</h:form>
 
 
 
