@@ -32,9 +32,9 @@
 
 
 
-<h:form id="formu2" rendered="#{registerLibro.verificarSesion()}">
+<h:form id="formu2">
 
-	<p:dataTable value="#{registerLibro.lstLibros}" var="lib">
+	<p:dataTable value="#{registerLibro.lstLibro}" var="lib">
 
 		<p:column headerText="Id Libro">
 			<h:outputLabel value="#{lib.idLibro}" />
