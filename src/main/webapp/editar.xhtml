@@ -13,24 +13,31 @@ and open the template in the editor.
 	<h:outputScript library="js" name="calendar_es.js" />
 	<title>MODIFICAR EMPLEADO</title>
 </h:head>
-<h:body>
+<h:body style="padding: 3em 15em; margin:auto; background-image: url(resources/img/fondo.jpg)">
 	<h:messages></h:messages>
-	<h:form>
-		<p:panelGrid columns="2">
-			<p:outputLabel value="Id" />
-			<p:inputText label="Id" value="#{registerLibro.libro.idLibro}" readonly="true" required="true" />
+	<div style="text-align: center;">
+		<h:form>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Id" />
+				<p:inputText label="Id" value="#{registerLibro.libro.idLibro}"
+					readonly="true" required="true" />
 
-			<p:outputLabel value="Titulo" />
-			<p:inputText label="Titulo" value="#{registerLibro.libro.título}" required="true" />
-			
-			<p:outputLabel value="Fecha Alta"/>
-			<p:calendar locale = "es" pattern="dd/MM/yyyy HH:mm:ss" value="#{registerLibro.libro.fechaPublicación}"></p:calendar>
+				<p:outputLabel value="Titulo" />
+				<p:inputText label="Titulo" value="#{registerLibro.libro.título}"
+					required="true" />
 
-			<p:commandButton action="#{registerLibro.modificar()}" value="Modificar" ajax="false"/>
-			<p:commandButton action="#{registerLibro.cancelar()}" immediate="true" value="Cancelar" />
-			
-			
-		</p:panelGrid>
-	</h:form>
+				<p:outputLabel value="Fecha Alta" />
+				<p:calendar locale="es" pattern="dd/MM/yyyy HH:mm:ss"
+					value="#{registerLibro.libro.fechaPublicación}"></p:calendar>
+
+				<p:commandButton action="#{registerLibro.modificar()}"
+					value="Modificar" ajax="false" />
+				<p:commandButton action="#{registerLibro.cancelar()}"
+					immediate="true" value="Cancelar" />
+
+
+			</p:panelGrid>
+		</h:form>
+	</div>
 </h:body>
 </html>
